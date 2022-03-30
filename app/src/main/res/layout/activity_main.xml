@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:hint="Digite um valr ex: 47.50"
+            android:hint="Digite um valor ex: 47.50"
             android:inputType="numberSigned|numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 

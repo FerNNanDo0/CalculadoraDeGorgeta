@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Type;
 
@@ -37,16 +38,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 inputTxt = editText.getText().toString();
-                if (!inputTxt.isEmpty()){
-                    float numInput = Float.parseFloat(inputTxt);
+                if ( !inputTxt.isEmpty() ){
+
+                    float numFloat = Float.parseFloat(inputTxt);
+                    int numInt = Integer.parseInt(inputTxt);
 
                     txtPorcent.setText(i+"%");
-                    txtGorgeta.setText("R$ " + numInput * seekBar.getProgress() / 100);
+                    txtGorgeta.setText("R$ " + numInt * seekBar.getProgress() / 100);
 
-                    PorcentTotal = Integer.parseInt(inputTxt) + (numInput * seekBar.getProgress() / 100);
+                    PorcentTotal = numInt + (numFloat * seekBar.getProgress() / 100);
                     txtTotal.setText("R$ "+PorcentTotal);
                 }
-
             }
 
             @Override
@@ -56,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                if (inputTxt.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Digite um valor acima",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
