@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
                     txtGorgeta.setText("R$ " + numInt * seekBar.getProgress() / 100);
 
                     PorcentTotal = numInt + (numFloat * seekBar.getProgress() / 100);
-                    txtTotal.setText("R$ "+PorcentTotal);
+             // Formatar numero  com duas casas decimais
+                    String TOTAL = new DecimalFormat("#,##0.00").format(PorcentTotal);
+                    txtTotal.setText("R$ "+TOTAL);
                 }
             }
 
